@@ -25,6 +25,7 @@ jobs:
         with:
           ref: gh-pages
           path: data
+          token: ${{ secrets.GH_TOKEN }}
       
       - name: Set up Python
         uses: actions/setup-python@v4
