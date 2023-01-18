@@ -32,4 +32,6 @@ jobs:
           python-version: "3.10"
       
       - name: Fetch data
-        run: python ./code/video_stars.py ./data/
+        run: | 
+          cd data
+          python ../code/video_stars.py
