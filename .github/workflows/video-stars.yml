@@ -1,0 +1,35 @@
+name: Update Roblox Video Stars data
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "* * 1 * *"
+  push:
+    branches:
+      - "main"
+    paths:
+      - "video_stars.py"
+
+jobs:
+  fetch:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+          path: code
+      
+      - name: Checkout data
+        uses: actions/checkout@v3
+        with:
+          ref: gh-pages
+          path: data
+      
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.10"
+      
+      - name: Fetch data
+        run: python ./code/video_stars.py ./data/
