@@ -31,13 +31,13 @@ async def main():
         print(f"{len(members)}/{target_role.member_count} ({percentage:.01f}%)")
 
     # export user info to CSV and IDs only to JSON. CSV for inspection, JSON for RoKitty ingest.
-    with open("star_creators.csv", "w", encoding="utf-8") as csv_file:
+    with open("video_stars.csv", "w", encoding="utf-8") as csv_file:
         csv_file.write("id,name,display_name\n")
         for member in members:
             csv_file.write(f"{member.id},{member.name},{member.display_name}\n")
 
     member_ids = [member.id for member in members]
-    with open("star_creator_ids.json", "w", encoding="utf-8") as json_file:
+    with open("video_star_ids.json", "w", encoding="utf-8") as json_file:
         json.dump(member_ids, json_file, indent=2)
 
 
