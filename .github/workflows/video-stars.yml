@@ -1,4 +1,4 @@
-name: Update Roblox Video Stars data
+name: Update Video Stars data
 
 on:
   workflow_dispatch:
@@ -39,3 +39,11 @@ jobs:
         run: | 
           cd data
           python ../code/video_stars.py
+      
+      
+      - name: Deploy to branch
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          git commit -am "Update Video Stars data"
+          git push
